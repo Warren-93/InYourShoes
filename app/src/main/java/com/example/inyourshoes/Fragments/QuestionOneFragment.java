@@ -29,8 +29,6 @@ public class QuestionOneFragment extends Fragment {
     private static final String Extra_QuestionOne = "QuestionOne";
     EditText questionOneAnswerText;
     TextView questionOne;
-    Button testBtn;
-
 
 
     UserAnswers userAnswers = new UserAnswers();
@@ -52,7 +50,6 @@ public class QuestionOneFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.question_one, parent, false);
         String question_one = getArguments().getString("Extra_QuestionOne");
-
         questionOne = rootView.findViewById(R.id.questionOneText);
         questionOneAnswerText = rootView.findViewById(R.id.questionFiveAnswer);
         questionOne.setText(question_one);
