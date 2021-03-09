@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">In Your Shoes</string>
+    <string name="log_out">Log Out</string>
+    <string name="facebook_app_id">997199860778432</string>
+    <string name="mood_tracker">Mood Tracker</string>
+    <string name="info">Info</string>
+    <string name="chat">Chat</string>
+    <string name="journal">Journal</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="register">register</string>
+    <string name="re_enter_password">Re-enter password</string>
+    <string name="enter_password">Enter password</string>
+    <string name="email">Email</string>
+    <string name="surname">Surname</string>
+    <string name="first_name">First name</string>
+    <string name="reset_passsword">Reset Passsword</string>
+    <string name="how_are_you_feeling_today">How Are You Feeling Today?</string>
+    <string name="submit">Submit</string>
+    <string name="_5_questions">5 Questions</string>
+    <string name="five_q_s">Five Qs</string>
+
+</resources>
