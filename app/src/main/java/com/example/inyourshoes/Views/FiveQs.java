@@ -14,6 +14,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.inyourshoes.Adapters.QuestionsPagerAdapter;
 import com.example.inyourshoes.Fragments.QuestionFiveFragment;
@@ -27,6 +28,7 @@ import com.example.inyourshoes.Model.QuestionsRandomFour;
 import com.example.inyourshoes.Model.Questions;
 
 import com.example.inyourshoes.Model.UserAnswers;
+import com.firebase.ui.auth.data.model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -86,40 +88,40 @@ public class FiveQs extends AppCompatActivity implements QuestionOneFragment.OnF
 
 
 
-
         answerSubmitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                for(Fragment fragment :  fragmentList){
-                    if(fragment instanceof QuestionOneFragment.OnFragmentOneListener){
-                        fragment.getView().getRootView().findViewById(R.id.questionOne)
-
-                    }
-                    if(fragment instanceof QuestionOneFragment.OnFragmentTwoListener){
-
+                UserAnswers userAnswers = new UserAnswers();
+                for(int position = 0; position < fragmentList.size(); position++ ){
+                    if(fragmentList instanceof QuestionOneFragment.OnFragmentOneListener){
+                        ((QuestionOneFragment.OnFragmentOneListener) fragmentList).getAnswerString();
+                        userAnswers.setQuestionOneAnswer(questionOneAnswer);
 
                     }
-                    if(fragment instanceof QuestionOneFragment.OnFragmentThreeListener){
-
-
-                    }
-                    if(fragment instanceof QuestionOneFragment.OnFragmentFourListener){
-
+                   if(fragmentList.get(position) instanceof QuestionTwoFragment.OnFragmentTwoListener){
+                        onQuestionTwodFragment.OnFragmentTwoListern;
+                        userAnswers.setQuestionTwoAnswer(questionTwoAnswer);
 
                     }
-                    if(fragment instanceof QuestionOneFragment.OnFragmentFiveListener){
+                    if(fragmentList.get(position) instanceof QuestionThreeFragment.OnFragmentThreeListener){
 
+                        userAnswers.setQuestionTwoAnswer(questionThreeAnswer);
 
                     }
+/*                    if(fragmentList.get(position) instanceof QuestionFourFragment.OnFragmentFourListener){
+                        onQuestionFourAnswerUpdated(questionTwoAnswer);
+                        userAnswers.setQuestionFourAnswer(questionFourAnswer);
 
+                    }
+                    if(fragmentList.get(position) instanceof QuestionFiveFragment.OnFragmentFiveListener){
+                        onQuestionFiveAnswerUpdated(questionFiveAnswer);
+                        userAnswers.setQuestionFiveAnswer(questionFiveAnswer);
 
+                    }*/
                 }
 
             }
         });
-
-
     }
 
     //Setup QuestionList from Firebase Data, First 3 questions are statically the same, question

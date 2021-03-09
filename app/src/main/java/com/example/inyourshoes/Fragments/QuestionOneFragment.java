@@ -7,15 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import com.example.inyourshoes.Interfaces.IFragment;
-import com.example.inyourshoes.Model.UserAnswers;
 
 import com.example.inyourshoes.Views.R;
 
@@ -24,10 +20,8 @@ import com.example.inyourshoes.Views.R;
 
 public class QuestionOneFragment extends Fragment {
 
-    IFragment fListener;
-
     private static final String Extra_QuestionOne = "QuestionOne";
-    EditText questionOneAnswerText;
+    EditText questionOneAnswer;
     TextView questionOne;
 
 
@@ -48,8 +42,9 @@ public class QuestionOneFragment extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.question_one, parent, false);
         String question_one = getArguments().getString("Extra_QuestionOne");
         questionOne = rootView.findViewById(R.id.questionOneText);
-        questionOneAnswerText = rootView.findViewById(R.id.questionFiveAnswer);
+        questionOneAnswer = rootView.findViewById(R.id.questionOneAnswer);
         questionOne.setText(question_one);
+
         return rootView;
     }
 
@@ -58,7 +53,11 @@ public class QuestionOneFragment extends Fragment {
     }
 
     public interface OnFragmentOneListener {
-        void onQuestionOneAnswer(String question);
+       void getAnswerString(String answer);
+    }
+
+    public void getAnswerString(){
+        questionOneAnswer.getText().toString();
     }
 
     public void onDetach() {

@@ -42,11 +42,6 @@ public class QuestionFourFragment extends Fragment {
 
     }
 
-
-    public void onClick(View view){
-        String question = questionFourAnswerText.getText().toString();
-    }
-
     public void onAttach(@NonNull Context context){
         super.onAttach(context);
     }

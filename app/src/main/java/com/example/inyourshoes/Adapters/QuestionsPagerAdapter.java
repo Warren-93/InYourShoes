@@ -23,7 +23,6 @@ public class QuestionsPagerAdapter extends FragmentStateAdapter {
 
     }
 
-
     @NonNull
     @Override
     public Fragment createFragment(int position) {

@@ -42,9 +42,6 @@ public class QuestionFiveFragment extends Fragment {
 
     }
 
-    public void onClick(View view){
-        String question = questionFiveAnswerText.getText().toString();
-    }
 
     public void onAttach(@NonNull Context context){
         super.onAttach(context);

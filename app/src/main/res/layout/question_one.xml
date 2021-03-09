@@ -16,18 +16,18 @@
         android:layout_marginBottom="8dp"
         android:textColor="@color/black"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/questionFiveAnswer"
+        app:layout_constraintBottom_toTopOf="@+id/questionOneAnswer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <EditText
-        android:id="@+id/questionFiveAnswer"
+        android:id="@+id/questionOneAnswer"
         android:layout_width="match_parent"
         android:layout_height="298dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginBottom="356dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
         android:gravity="start|top"
         android:importantForAutofill="no"

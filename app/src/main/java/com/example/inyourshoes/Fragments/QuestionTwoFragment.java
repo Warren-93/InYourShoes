@@ -20,7 +20,7 @@ public class QuestionTwoFragment extends Fragment {
     private static final String Extra_QuestionTwo = "QuestionTwo";
 
     TextView questionTwo;
-    EditText questionTwoAnswerText;
+    EditText questionTwoAnswer;
 
     public static QuestionTwoFragment newInstance(String question){
 
@@ -39,8 +39,7 @@ public class QuestionTwoFragment extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.question_two, container, false);
         String question_Two = getArguments().getString("Extra_QuestionTwo");
         questionTwo = (TextView) rootView.findViewById(R.id.questionTwoText);
-        questionTwoAnswerText = rootView.findViewById(R.id.questionTwoAnswer);
-        questionTwoAnswerText.getText().toString();
+        questionTwoAnswer = rootView.findViewById(R.id.questionTwoAnswer);
         questionTwo.setText(question_Two);
         return rootView;
     }
@@ -49,11 +48,13 @@ public class QuestionTwoFragment extends Fragment {
     public void onAttach(@NonNull Context context){
         super.onAttach(context);
     }
-
     public interface OnFragmentTwoListener {
-        void onQuestionTwoAnswerUpdated(String question);
+        void getAnswerString(String answer);
     }
 
+    public void getAnswerString(){
+        questionTwoAnswer.getText().toString();
+    }
     public void onDetach() {
         super.onDetach();
     }
