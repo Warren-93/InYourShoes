@@ -20,7 +20,7 @@ public class QuestionTwoFragment extends Fragment {
     private static final String Extra_QuestionTwo = "QuestionTwo";
 
     TextView questionTwo;
-    EditText questionOneAnswerText;
+    EditText questionTwoAnswerText;
 
     public static QuestionTwoFragment newInstance(String question){
 
@@ -43,7 +43,6 @@ public class QuestionTwoFragment extends Fragment {
         questionTwoAnswerText.getText().toString();
         questionTwo.setText(question_Two);
         return rootView;
-
     }
 
 

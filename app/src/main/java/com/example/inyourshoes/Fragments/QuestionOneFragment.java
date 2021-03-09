@@ -31,8 +31,6 @@ public class QuestionOneFragment extends Fragment {
     TextView questionOne;
 
 
-
-
     public static QuestionOneFragment newInstance(String question){
         QuestionOneFragment fragmentOne = new QuestionOneFragment();
 
@@ -54,7 +52,6 @@ public class QuestionOneFragment extends Fragment {
         questionOne.setText(question_one);
         return rootView;
     }
-
 
     public void onAttach(@NonNull Context context){
         super.onAttach(context);
