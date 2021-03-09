@@ -10,13 +10,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import com.example.inyourshoes.Interfaces.IFragmentOne;
+import com.example.inyourshoes.Interfaces.IFragment;
 import com.example.inyourshoes.Views.R;
 
 
 
 
-public class QuestionOneFragment extends Fragment implements IFragmentOne {
+public class QuestionOneFragment extends Fragment implements IFragment {
 
     private static final String Extra_QuestionOne = "QuestionOne";
     EditText questionOneAnswer;
@@ -53,7 +53,7 @@ public class QuestionOneFragment extends Fragment implements IFragmentOne {
         super.onDetach();
     }
 
-    public String onQuestionOneAnswer() {
+    public String onQuestionAnswer() {
         return questionOneAnswer.getText().toString();
     }
 }

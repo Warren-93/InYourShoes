@@ -5,17 +5,22 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.inyourshoes.Interfaces.IFragment;
 import com.example.inyourshoes.Views.R;
 
-public class QuestionFourFragment extends Fragment {
+public class QuestionFourFragment extends Fragment implements IFragment {
 
     private static final String Extra_QuestionFour = "QuestionFour";
+
+    TextView questionFour;
+    EditText questionFourAnswer;
 
     public static QuestionFourFragment newInstance(String question){
 
@@ -35,23 +40,27 @@ public class QuestionFourFragment extends Fragment {
 
 
         String question_Four = getArguments().getString("Extra_QuestionFour");
-        TextView questionFour = (TextView) rootView.findViewById(R.id.questionFourText);
+        questionFour = (TextView) rootView.findViewById(R.id.questionFour);
+        questionFourAnswer = rootView.findViewById(R.id.questionFourAnswer);
+
         questionFour.setText(question_Four);
 
         return rootView;
-
     }
 
     public void onAttach(@NonNull Context context){
         super.onAttach(context);
     }
 
-    public interface OnFragmentFourListener {
-        void onQuestionFourAnswerUpdated(String questionOneAnswer);
+
+    @Override
+    public String onQuestionAnswer() {
+        return questionFourAnswer.getText().toString();
     }
 
     public void onDetach() {
         super.onDetach();
     }
+
 
 }

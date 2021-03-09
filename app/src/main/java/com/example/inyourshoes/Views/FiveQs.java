@@ -6,8 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.fragment.app.Fragment;
 
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -23,13 +21,11 @@ import com.example.inyourshoes.Fragments.QuestionThreeFragment;
 import com.example.inyourshoes.Fragments.QuestionTwoFragment;
 import com.example.inyourshoes.Fragments.QuestionOneFragment;
 
-import com.example.inyourshoes.Interfaces.IFragmentOne;
+import com.example.inyourshoes.Interfaces.IFragment;
 import com.example.inyourshoes.Model.QuestionsRandomFive;
 import com.example.inyourshoes.Model.QuestionsRandomFour;
 import com.example.inyourshoes.Model.Questions;
 
-import com.example.inyourshoes.Model.UserAnswers;
-import com.firebase.ui.auth.data.model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -84,18 +80,18 @@ public class FiveQs extends AppCompatActivity  {
         getQuestionFives();
 
 
-
         answerSubmitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             //    UserAnswers userAnswers = new UserAnswers();
                 List<String> answerList = new ArrayList<>();
                 for(int position = 0; position < fragmentList.size(); position++ ){
-                    if(fragmentList.get(position) instanceof IFragmentOne){
-                        IFragmentOne fragmentOne = (IFragmentOne) fragmentList.get(position);
-                        answerList.add(fragmentOne.onQuestionOneAnswer());
+                    if(fragmentList.get(position) instanceof IFragment){
+                        IFragment fragment = (IFragment) fragmentList.get(position);
+                        answerList.add(fragment.onQuestionAnswer());
                     }
                 }
+                //Toast.makeText(this, answerList.get(0), Toast.LENGTH_LONG).show();
             }
         });
     }
