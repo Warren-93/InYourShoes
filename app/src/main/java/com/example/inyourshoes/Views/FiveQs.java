@@ -23,6 +23,7 @@ import com.example.inyourshoes.Fragments.QuestionThreeFragment;
 import com.example.inyourshoes.Fragments.QuestionTwoFragment;
 import com.example.inyourshoes.Fragments.QuestionOneFragment;
 
+import com.example.inyourshoes.Interfaces.IFragmentOne;
 import com.example.inyourshoes.Model.QuestionsRandomFive;
 import com.example.inyourshoes.Model.QuestionsRandomFour;
 import com.example.inyourshoes.Model.Questions;
@@ -40,11 +41,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class FiveQs extends AppCompatActivity implements QuestionOneFragment.OnFragmentOneListener,
-        QuestionTwoFragment.OnFragmentTwoListener,
-        QuestionThreeFragment.OnFragmentThreeListener,
-        QuestionFourFragment.OnFragmentFourListener,
-        QuestionFiveFragment.OnFragmentFiveListener{
+public class FiveQs extends AppCompatActivity  {
 
 
     private String questionOneAnswer;
@@ -91,35 +88,14 @@ public class FiveQs extends AppCompatActivity implements QuestionOneFragment.OnF
         answerSubmitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UserAnswers userAnswers = new UserAnswers();
+            //    UserAnswers userAnswers = new UserAnswers();
+                List<String> answerList = new ArrayList<>();
                 for(int position = 0; position < fragmentList.size(); position++ ){
-                    if(fragmentList instanceof QuestionOneFragment.OnFragmentOneListener){
-                        ((QuestionOneFragment.OnFragmentOneListener) fragmentList).getAnswerString();
-                        userAnswers.setQuestionOneAnswer(questionOneAnswer);
-
+                    if(fragmentList.get(position) instanceof IFragmentOne){
+                        IFragmentOne fragmentOne = (IFragmentOne) fragmentList.get(position);
+                        answerList.add(fragmentOne.onQuestionOneAnswer());
                     }
-                   if(fragmentList.get(position) instanceof QuestionTwoFragment.OnFragmentTwoListener){
-                        onQuestionTwodFragment.OnFragmentTwoListern;
-                        userAnswers.setQuestionTwoAnswer(questionTwoAnswer);
-
-                    }
-                    if(fragmentList.get(position) instanceof QuestionThreeFragment.OnFragmentThreeListener){
-
-                        userAnswers.setQuestionTwoAnswer(questionThreeAnswer);
-
-                    }
-/*                    if(fragmentList.get(position) instanceof QuestionFourFragment.OnFragmentFourListener){
-                        onQuestionFourAnswerUpdated(questionTwoAnswer);
-                        userAnswers.setQuestionFourAnswer(questionFourAnswer);
-
-                    }
-                    if(fragmentList.get(position) instanceof QuestionFiveFragment.OnFragmentFiveListener){
-                        onQuestionFiveAnswerUpdated(questionFiveAnswer);
-                        userAnswers.setQuestionFiveAnswer(questionFiveAnswer);
-
-                    }*/
                 }
-
             }
         });
     }
@@ -226,7 +202,6 @@ public class FiveQs extends AppCompatActivity implements QuestionOneFragment.OnF
         return index;
     }
 
-
     private List<Fragment> getFragments(){
         fragmentList.add(QuestionOneFragment.newInstance(questionList.get(0).getQuestion()));
         fragmentList.add(QuestionTwoFragment.newInstance(questionList.get(1).getQuestion()));
@@ -238,31 +213,6 @@ public class FiveQs extends AppCompatActivity implements QuestionOneFragment.OnF
 
 
 
-
-    @Override
-    public void onQuestionOneAnswerUpdated(String question) {
-        questionOneAnswer = question;
-    }
-
-    @Override
-    public void onQuestionFiveAnswerUpdated(String question) {
-        questionFiveAnswer = question;
-    }
-
-    @Override
-    public void onQuestionFourAnswerUpdated(String question) {
-        questionFourAnswer = question;
-    }
-
-    @Override
-    public void onQuestionThreeAnswerUpdated(String question) {
-        questionThreeAnswer = question;
-    }
-
-    @Override
-    public void onQuestionTwoAnswerUpdated(String question) {
-        questionTwoAnswer = question;
-    }
 }
 
 

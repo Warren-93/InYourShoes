@@ -47,18 +47,16 @@ public class QuestionThreeFragment extends Fragment {
 
     }
 
-
-    public void onClick(View view){
-        String question = questionThreeAnswer.getText().toString();
-    }
-
     public void onAttach(@NonNull Context context){
         super.onAttach(context);
     }
 
-    public interface OnFragmentThreeListener {
-        void onQuestionThreeAnswerUpdated(String questionOneAnswer);
+
+
+    public String onQuestionThreeAnswer() {
+        return questionThreeAnswer.getText().toString();
     }
+
 
     public void onDetach() {
         super.onDetach();

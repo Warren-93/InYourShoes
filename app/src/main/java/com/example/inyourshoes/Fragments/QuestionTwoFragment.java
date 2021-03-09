@@ -48,13 +48,12 @@ public class QuestionTwoFragment extends Fragment {
     public void onAttach(@NonNull Context context){
         super.onAttach(context);
     }
-    public interface OnFragmentTwoListener {
-        void getAnswerString(String answer);
+
+
+    public String onQuestionTwoAnswer() {
+        return questionTwoAnswer.getText().toString();
     }
 
-    public void getAnswerString(){
-        questionTwoAnswer.getText().toString();
-    }
     public void onDetach() {
         super.onDetach();
     }

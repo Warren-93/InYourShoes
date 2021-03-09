@@ -5,20 +5,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-
 import android.widget.EditText;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
+import com.example.inyourshoes.Interfaces.IFragmentOne;
 import com.example.inyourshoes.Views.R;
 
 
 
 
-public class QuestionOneFragment extends Fragment {
+public class QuestionOneFragment extends Fragment implements IFragmentOne {
 
     private static final String Extra_QuestionOne = "QuestionOne";
     EditText questionOneAnswer;
@@ -27,7 +25,6 @@ public class QuestionOneFragment extends Fragment {
 
     public static QuestionOneFragment newInstance(String question){
         QuestionOneFragment fragmentOne = new QuestionOneFragment();
-
         Bundle bundle = new Bundle();
         bundle.putString("Extra_QuestionOne", question);
         fragmentOne.setArguments(bundle);
@@ -52,15 +49,11 @@ public class QuestionOneFragment extends Fragment {
         super.onAttach(context);
     }
 
-    public interface OnFragmentOneListener {
-       void getAnswerString(String answer);
-    }
-
-    public void getAnswerString(){
-        questionOneAnswer.getText().toString();
-    }
-
     public void onDetach() {
         super.onDetach();
+    }
+
+    public String onQuestionOneAnswer() {
+        return questionOneAnswer.getText().toString();
     }
 }
