@@ -85,6 +85,41 @@ public class FiveQs extends AppCompatActivity implements QuestionOneFragment.OnF
         getQuestionFives();
 
 
+
+
+        answerSubmitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                for(Fragment fragment :  fragmentList){
+                    if(fragment instanceof QuestionOneFragment.OnFragmentOneListener){
+                        fragment.getView().getRootView().findViewById(R.id.questionOne)
+
+                    }
+                    if(fragment instanceof QuestionOneFragment.OnFragmentTwoListener){
+
+
+                    }
+                    if(fragment instanceof QuestionOneFragment.OnFragmentThreeListener){
+
+
+                    }
+                    if(fragment instanceof QuestionOneFragment.OnFragmentFourListener){
+
+
+                    }
+                    if(fragment instanceof QuestionOneFragment.OnFragmentFiveListener){
+
+
+                    }
+
+
+                }
+
+            }
+        });
+
+
     }
 
     //Setup QuestionList from Firebase Data, First 3 questions are statically the same, question

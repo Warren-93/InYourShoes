@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,9 @@ import com.example.inyourshoes.Views.R;
 public class QuestionThreeFragment extends Fragment {
 
     private static final String Extra_QuestionThree = "QuestionThree";
+
+    EditText questionThreeAnswer;
+    TextView questionThree;
 
     public static QuestionThreeFragment newInstance(String question){
 
@@ -34,7 +38,8 @@ public class QuestionThreeFragment extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.question_three, container, false);
 
         String question_Three = getArguments().getString("Extra_QuestionThree");
-        TextView questionThree = (TextView) rootView.findViewById(R.id.questionThreeText);
+        questionThree = (TextView) rootView.findViewById(R.id.questionThreeText);
+        questionThreeAnswer = rootView.findViewById(R.id.questionThreeAnswer);
         questionThree.setText(question_Three);
 
 
@@ -43,9 +48,8 @@ public class QuestionThreeFragment extends Fragment {
     }
 
 
-
     public void onClick(View view){
-        String question = questionThreeAnswerText.getText().toString();
+        String question = questionThreeAnswer.getText().toString();
     }
 
     public void onAttach(@NonNull Context context){

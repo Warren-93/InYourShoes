@@ -31,7 +31,6 @@ public class QuestionOneFragment extends Fragment {
     TextView questionOne;
 
 
-    UserAnswers userAnswers = new UserAnswers();
 
 
     public static QuestionOneFragment newInstance(String question){
@@ -53,22 +52,16 @@ public class QuestionOneFragment extends Fragment {
         questionOne = rootView.findViewById(R.id.questionOneText);
         questionOneAnswerText = rootView.findViewById(R.id.questionFiveAnswer);
         questionOne.setText(question_one);
-        userAnswers.setQuestionOne(question_one);
         return rootView;
     }
 
-    public void onClick(View view){
-
-
-        String question = questionOneAnswerText.getText().toString();
-    }
 
     public void onAttach(@NonNull Context context){
         super.onAttach(context);
     }
 
     public interface OnFragmentOneListener {
-        void onQuestionOneAnswerUpdated(String questionOneAnswer);
+        void onQuestionOneAnswer(String question);
     }
 
     public void onDetach() {
