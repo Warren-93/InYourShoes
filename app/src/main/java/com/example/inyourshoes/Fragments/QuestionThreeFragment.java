@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.inyourshoes.Interfaces.IFragment;
+import com.example.inyourshoes.Model.UserAnswers;
 import com.example.inyourshoes.Views.R;
 
 public class QuestionThreeFragment extends Fragment implements IFragment {
@@ -39,7 +40,7 @@ public class QuestionThreeFragment extends Fragment implements IFragment {
                 false);
 
         String question_Three = getArguments().getString("Extra_QuestionThree");
-        questionThree = rootView.findViewById(R.id.questionThreeText);
+        questionThree = rootView.findViewById(R.id.questionThree);
         questionThreeAnswer = rootView.findViewById(R.id.questionThreeAnswer);
         questionThree.setText(question_Three);
         return rootView;
@@ -51,7 +52,7 @@ public class QuestionThreeFragment extends Fragment implements IFragment {
     }
 
 
-    public String onQuestionAnswer() {
+    public UserAnswers onQuestionAnswer() {
         return questionThreeAnswer.getText().toString();
     }
 

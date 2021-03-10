@@ -1,7 +1,7 @@
 package com.example.inyourshoes.Interfaces;
 
-import android.view.View;
+import com.example.inyourshoes.Model.UserAnswers;
 
 public interface IFragment {
-    String onQuestionAnswer();
+    UserAnswers onQuestionAnswer();
 }

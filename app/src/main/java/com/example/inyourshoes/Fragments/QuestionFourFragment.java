@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.inyourshoes.Interfaces.IFragment;
+import com.example.inyourshoes.Model.UserAnswers;
 import com.example.inyourshoes.Views.R;
 
 public class QuestionFourFragment extends Fragment implements IFragment {
@@ -54,7 +55,7 @@ public class QuestionFourFragment extends Fragment implements IFragment {
 
 
     @Override
-    public String onQuestionAnswer() {
+    public UserAnswers onQuestionAnswer() {
         return questionFourAnswer.getText().toString();
     }
 

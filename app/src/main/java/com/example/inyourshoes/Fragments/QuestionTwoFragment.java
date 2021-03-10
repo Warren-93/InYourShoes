@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.inyourshoes.Interfaces.IFragment;
+import com.example.inyourshoes.Model.UserAnswers;
 import com.example.inyourshoes.Views.R;
 
 public class QuestionTwoFragment extends Fragment implements IFragment {
@@ -39,9 +40,11 @@ public class QuestionTwoFragment extends Fragment implements IFragment {
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.question_two, container, false);
         String question_Two = getArguments().getString("Extra_QuestionTwo");
-        questionTwo = (TextView) rootView.findViewById(R.id.questionTwoText);
+
+        questionTwo = (TextView) rootView.findViewById(R.id.questionTwo);
         questionTwoAnswer = rootView.findViewById(R.id.questionTwoAnswer);
         questionTwo.setText(question_Two);
+
         return rootView;
     }
 
@@ -51,7 +54,7 @@ public class QuestionTwoFragment extends Fragment implements IFragment {
     }
 
 
-    public String onQuestionAnswer() {
+    public UserAnswers onQuestionAnswer() {
         return questionTwoAnswer.getText().toString();
     }
 

@@ -8,11 +8,13 @@
     android:background="@color/teal_700">
 
     <TextView
-        android:id="@+id/questionThreeText"
+        android:id="@+id/questionThree"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/questionThreeAnswer"
@@ -24,17 +26,18 @@
 
     <EditText
         android:id="@+id/questionThreeAnswer"
-        android:layout_width="371dp"
+        android:layout_width="match_parent"
         android:layout_height="298dp"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="108dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:gravity="start|top"
         android:importantForAutofill="no"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

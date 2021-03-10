@@ -61,14 +61,13 @@ public class FiveQs extends AppCompatActivity  {
     List<Questions> questionList = new ArrayList<>();
     List<QuestionsRandomFour> questionFourList = new ArrayList<>();
     List<QuestionsRandomFive> questionFiveList = new ArrayList<>();
-    ArrayList  questionAnswers = new ArrayList();
+    List<UserAnswers> answerList = new ArrayList<>();
 
 
     ViewPager2 viewPager2;
     FragmentStateAdapter questionsPagerAdapter;
     Button answerSubmitBtn;
     List<Fragment> fragmentList = new ArrayList<>();
-    List<String> answerList = new ArrayList<>();
 
 
     @Override
@@ -209,42 +208,25 @@ public class FiveQs extends AppCompatActivity  {
         UserAnswers userAnswers = new UserAnswers();
 
         for(int position = 0; position < fragmentList.size(); position++ ){
-            if(fragmentList.get(position) instanceof IFragment){
                 IFragment fragment = (IFragment) fragmentList.get(position);
-                userAnswers.setQuestionOne(questionList.get(position).getQuestion());
-                userAnswers.setQuestionOneAnswer(fragment.onQuestionAnswer());
+                userAnswers.setQuestionAnswer(questionList.get(position).getQuestion());
+                answerList.add(fragment.onQuestionAnswer());
+                userAnswers.setQuestion(answerList.get(position).getQuestionAnswer());
             }
-            if(fragmentList.get(position) instanceof IFragment){
-                IFragment fragment = (IFragment) fragmentList.get(position);
-                userAnswers.setQuestionTwo(questionList.get(position).getQuestion());
-                userAnswers.setQuestionTwoAnswer(fragment.onQuestionAnswer());
-            }
-            if(fragmentList.get(position) instanceof IFragment){
-                IFragment fragment = (IFragment) fragmentList.get(position);
-                userAnswers.setQuestionThree(questionList.get(position).getQuestion());
-                userAnswers.setQuestionThreeAnswer(fragment.onQuestionAnswer());
-            }
-            if(fragmentList.get(position) instanceof IFragment){
-                IFragment fragment = (IFragment) fragmentList.get(position);
-                userAnswers.setQuestionFour(questionList.get(position).getQuestion());
-                userAnswers.setQuestionFourAnswer(fragment.onQuestionAnswer());
-            }
-            if(fragmentList.get(position) instanceof IFragment){
-                IFragment fragment = (IFragment) fragmentList.get(position);
-                userAnswers.setQuestionFive(questionList.get(position).getQuestion());
-                userAnswers.setQuestionFiveAnswer(fragment.onQuestionAnswer());
-            }
+
+
+        submitAnswers(answerList);
         }
 
-        submitAnswers(userAnswers);
-    }
 
 
-    public void submitAnswers(UserAnswers userAnswers){
+    public void submitAnswers(List<UserAnswers> answerList){
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        UserAnswers userAnswers = new UserAnswers();
         databaseUserAnswers = FirebaseDatabase.getInstance().getReference("Users").child("user-answers");
+
 
         if (account != null) {
             userAnswers.setUserId(account.getId());

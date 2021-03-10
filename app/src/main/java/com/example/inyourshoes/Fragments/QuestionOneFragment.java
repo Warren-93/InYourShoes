@@ -7,10 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.inyourshoes.Interfaces.IFragment;
+import com.example.inyourshoes.Model.UserAnswers;
 import com.example.inyourshoes.Views.R;
 
 
@@ -38,7 +40,7 @@ public class QuestionOneFragment extends Fragment implements IFragment {
                              @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.question_one, parent, false);
         String question_one = getArguments().getString("Extra_QuestionOne");
-        questionOne = rootView.findViewById(R.id.questionOneText);
+        questionOne = rootView.findViewById(R.id.questionOne);
         questionOneAnswer = rootView.findViewById(R.id.questionOneAnswer);
         questionOne.setText(question_one);
 
@@ -49,11 +51,12 @@ public class QuestionOneFragment extends Fragment implements IFragment {
         super.onAttach(context);
     }
 
+    public UserAnswers onQuestionAnswer() {
+        return questionOneAnswer.getText().toString();
+    }
+
     public void onDetach() {
         super.onDetach();
     }
 
-    public String onQuestionAnswer() {
-        return questionOneAnswer.getText().toString();
-    }
 }
