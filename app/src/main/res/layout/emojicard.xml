@@ -12,7 +12,7 @@
     android:focusable="true"
     android:paddingStart="100dp"
     android:paddingEnd="100dp"
-    app:cardBackgroundColor="#01579B"
+    app:cardBackgroundColor="#043768"
     app:cardCornerRadius="30dp">
 
 
