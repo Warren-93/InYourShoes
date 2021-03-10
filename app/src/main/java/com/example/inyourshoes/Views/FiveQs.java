@@ -61,7 +61,7 @@ public class FiveQs extends AppCompatActivity  {
     List<Questions> questionList = new ArrayList<>();
     List<QuestionsRandomFour> questionFourList = new ArrayList<>();
     List<QuestionsRandomFive> questionFiveList = new ArrayList<>();
-    List<UserAnswers> answerList = new ArrayList<>();
+    ArrayList answerList = new ArrayList();
 
 
     ViewPager2 viewPager2;
@@ -206,21 +206,21 @@ public class FiveQs extends AppCompatActivity  {
 
     public void getUserAnswers(){
         UserAnswers userAnswers = new UserAnswers();
-
-        for(int position = 0; position < fragmentList.size(); position++ ){
+        for(int position = 0; position < fragmentList.size(); position++){
+            if(fragmentList.get(position) instanceof IFragment){
                 IFragment fragment = (IFragment) fragmentList.get(position);
-                userAnswers.setQuestionAnswer(questionList.get(position).getQuestion());
                 answerList.add(fragment.onQuestionAnswer());
-                userAnswers.setQuestion(answerList.get(position).getQuestionAnswer());
             }
 
+        }
 
         submitAnswers(answerList);
+
         }
 
 
 
-    public void submitAnswers(List<UserAnswers> answerList){
+    public void submitAnswers(ArrayList answerList){
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -231,13 +231,13 @@ public class FiveQs extends AppCompatActivity  {
         if (account != null) {
             userAnswers.setUserId(account.getId());
             String id = databaseUserAnswers.push().getKey();
-            databaseUserAnswers.child(id).setValue(userAnswers);
+            databaseUserAnswers.child(id).setValue(answerList);
         }
 
         if (firebaseUser != null){
             userAnswers.setUserId(firebaseUser.getUid());
             String id = databaseUserAnswers.push().getKey();
-            databaseUserAnswers.child(id).setValue(userAnswers);
+            databaseUserAnswers.child(id).setValue(answerList);
         }
     }
 

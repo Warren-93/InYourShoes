@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.inyourshoes.Interfaces.IFragment;
-import com.example.inyourshoes.Model.UserAnswers;
 import com.example.inyourshoes.Views.R;
 
 public class QuestionTwoFragment extends Fragment implements IFragment {
@@ -54,7 +53,7 @@ public class QuestionTwoFragment extends Fragment implements IFragment {
     }
 
 
-    public UserAnswers onQuestionAnswer() {
+    public String onQuestionAnswer() {
         return questionTwoAnswer.getText().toString();
     }
 

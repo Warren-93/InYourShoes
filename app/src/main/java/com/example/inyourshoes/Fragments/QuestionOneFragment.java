@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.inyourshoes.Interfaces.IFragment;
-import com.example.inyourshoes.Model.UserAnswers;
 import com.example.inyourshoes.Views.R;
 
 
@@ -51,12 +50,17 @@ public class QuestionOneFragment extends Fragment implements IFragment {
         super.onAttach(context);
     }
 
-    public UserAnswers onQuestionAnswer() {
+
+
+    @Override
+    public String onQuestionAnswer() {
         return questionOneAnswer.getText().toString();
     }
+
 
     public void onDetach() {
         super.onDetach();
     }
+
 
 }
