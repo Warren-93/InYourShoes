@@ -119,6 +119,7 @@ public class MoodTracker extends AppCompatActivity implements IEmoji {
 
                 Toast.makeText(this, "Emotion selected Succesfully", Toast.LENGTH_SHORT).show();
 
+
             } else if (firebaseUser != null) {
 
                 userEmotions.setUserId(firebaseUser.getUid());
@@ -129,6 +130,7 @@ public class MoodTracker extends AppCompatActivity implements IEmoji {
                 String id = databaseEmotions.push().getKey();
                 databaseEmotions.child(id).setValue(userEmotions);
                 Toast.makeText(this, "Emotion selected Succesfully", Toast.LENGTH_SHORT).show();
+
             }
         }
         else {
