@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class QuestionArrayList extends ArrayList<Questions> {
 
 
-    public ArrayList staticQuestionList;
+    public ArrayList questionList;
 
     public QuestionArrayList() {
         super();
@@ -13,11 +13,11 @@ public class QuestionArrayList extends ArrayList<Questions> {
 
 
     public ArrayList getStaticQuestionList() {
-        return staticQuestionList;
+        return questionList;
     }
 
     public QuestionArrayList setStaticQuestionList(ArrayList staticQuestionList) {
-        this.staticQuestionList = staticQuestionList;
+        this.questionList = staticQuestionList;
         return this;
     }
 

@@ -52,7 +52,6 @@ public class QuestionTwoFragment extends Fragment implements IFragment {
         super.onAttach(context);
     }
 
-
     public String onQuestionAnswer() {
         return questionTwoAnswer.getText().toString();
     }

@@ -41,7 +41,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class FiveQs extends AppCompatActivity  {
+public class FiveQs extends AppCompatActivity {
 
 
     private String questionOneAnswer;
@@ -135,6 +135,7 @@ public class FiveQs extends AppCompatActivity  {
                 }
                 Questions questions = new Questions();
                 questions.setQuestion((questionFourList.get(getRandomQuestionFour()).getQuestion()));
+                questions.setId(4);
                 questionList.add(questions);
             }
 
@@ -163,6 +164,7 @@ public class FiveQs extends AppCompatActivity  {
 
                 Questions questions = new Questions();
                 questions.setQuestion((questionFiveList.get(getRandomQuestionFive()).getQuestion()));
+                questions.setId(5);
                 questionList.add(questions);
                 getFragments();
                 viewPager2.setAdapter(questionsPagerAdapter);
@@ -182,62 +184,79 @@ public class FiveQs extends AppCompatActivity  {
     //Get Random Position from each of the Question four and Question Fives ArrayLists to add to
     // the questionList, alongside the static 1-3 questions
 
-    public int getRandomQuestionFour(){
+    public int getRandomQuestionFour() {
         Random random = new Random();
         int index = random.nextInt(questionFourList.size());
         return index;
     }
 
-    public int getRandomQuestionFive(){
+    public int getRandomQuestionFive() {
         Random random = new Random();
         int index = random.nextInt(questionFiveList.size());
         return index;
     }
 
-    private List<Fragment> getFragments(){
+    private List<Fragment> getFragments() {
         fragmentList.add(QuestionOneFragment.newInstance(questionList.get(0).getQuestion()));
         fragmentList.add(QuestionTwoFragment.newInstance(questionList.get(1).getQuestion()));
         fragmentList.add(QuestionThreeFragment.newInstance(questionList.get(2).getQuestion()));
         fragmentList.add(QuestionFourFragment.newInstance(questionList.get(3).getQuestion()));
         fragmentList.add(QuestionFiveFragment.newInstance(questionList.get(4).getQuestion()));
-       return fragmentList;
+        return fragmentList;
     }
 
 
-    public void getUserAnswers(){
+    public void getUserAnswers() {
         UserAnswers userAnswers = new UserAnswers();
-        for(int position = 0; position < fragmentList.size(); position++){
-            if(fragmentList.get(position) instanceof IFragment){
+        for (int position = 0; position < fragmentList.size(); position++) {
+            if (fragmentList.get(position) instanceof IFragment) {
                 IFragment fragment = (IFragment) fragmentList.get(position);
                 answerList.add(fragment.onQuestionAnswer());
             }
 
         }
+        submitAnswers();
 
-        submitAnswers(answerList);
-
-        }
-
+    }
 
 
-    public void submitAnswers(ArrayList answerList){
+    public void submitAnswers() {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         UserAnswers userAnswers = new UserAnswers();
         databaseUserAnswers = FirebaseDatabase.getInstance().getReference("Users").child("user-answers");
 
+        for (int i = 0; i < questionList.size(); i++) {
+            switch (i) {
+                case 0:
+                    userAnswers.setQuestionOne(questionList.get(0).getQuestion());
+                    userAnswers.setQuestionOneAnswer(answerList.get(0).toString());
+                case 1:
+                    userAnswers.setQuestionTwo(questionList.get(1).getQuestion());
+                    userAnswers.setQuestionTwoAnswer(answerList.get(1).toString());
+                case 2:
+                    userAnswers.setQuestionThree(questionList.get(2).getQuestion());
+                    userAnswers.setQuestionThreeAnswer(answerList.get(2).toString());
+                case 3:
+                    userAnswers.setQuestionFour(questionList.get(3).getQuestion());
+                    userAnswers.setQuestionFourAnswer(answerList.get(3).toString());
+                case 4:
+                    userAnswers.setQuestionFive(questionList.get(4).getQuestion().toString());
+                    userAnswers.setQuestionFiveAnswer(answerList.get(4).toString());
+            }
+        }
 
         if (account != null) {
             userAnswers.setUserId(account.getId());
             String id = databaseUserAnswers.push().getKey();
-            databaseUserAnswers.child(id).setValue(answerList);
+            databaseUserAnswers.child(id).setValue(userAnswers);
         }
 
-        if (firebaseUser != null){
+        if (firebaseUser != null) {
             userAnswers.setUserId(firebaseUser.getUid());
             String id = databaseUserAnswers.push().getKey();
-            databaseUserAnswers.child(id).setValue(answerList);
+            databaseUserAnswers.child(id).setValue(userAnswers);
         }
     }
 

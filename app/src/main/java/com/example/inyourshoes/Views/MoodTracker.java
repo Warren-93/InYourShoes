@@ -90,9 +90,6 @@ public class MoodTracker extends AppCompatActivity implements IEmoji {
 
 
 
-
-
-
     @Override
     public void onClick(View view, int position) {
         trackEmotion(position);
