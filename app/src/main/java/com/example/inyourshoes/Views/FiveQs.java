@@ -10,11 +10,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.inyourshoes.Adapters.QuestionsPagerAdapter;
 import com.example.inyourshoes.Fragments.QuestionFiveFragment;
@@ -28,6 +25,11 @@ import com.example.inyourshoes.Model.QuestionsRandomFive;
 import com.example.inyourshoes.Model.QuestionsRandomFour;
 import com.example.inyourshoes.Model.Questions;
 
+import com.example.inyourshoes.Model.UserAnswers;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -86,9 +88,7 @@ public class FiveQs extends AppCompatActivity  {
         answerSubmitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int position = 0;
                 getUserAnswers();
-                submitAnswers(position);
             }
         });
     }
@@ -206,19 +206,57 @@ public class FiveQs extends AppCompatActivity  {
 
 
     public void getUserAnswers(){
-
+        UserAnswers userAnswers = new UserAnswers();
 
         for(int position = 0; position < fragmentList.size(); position++ ){
             if(fragmentList.get(position) instanceof IFragment){
                 IFragment fragment = (IFragment) fragmentList.get(position);
-                answerList.add(fragment.onQuestionAnswer());
+                userAnswers.setQuestionOne(questionList.get(position).getQuestion());
+                userAnswers.setQuestionOneAnswer(fragment.onQuestionAnswer());
+            }
+            if(fragmentList.get(position) instanceof IFragment){
+                IFragment fragment = (IFragment) fragmentList.get(position);
+                userAnswers.setQuestionTwo(questionList.get(position).getQuestion());
+                userAnswers.setQuestionTwoAnswer(fragment.onQuestionAnswer());
+            }
+            if(fragmentList.get(position) instanceof IFragment){
+                IFragment fragment = (IFragment) fragmentList.get(position);
+                userAnswers.setQuestionThree(questionList.get(position).getQuestion());
+                userAnswers.setQuestionThreeAnswer(fragment.onQuestionAnswer());
+            }
+            if(fragmentList.get(position) instanceof IFragment){
+                IFragment fragment = (IFragment) fragmentList.get(position);
+                userAnswers.setQuestionFour(questionList.get(position).getQuestion());
+                userAnswers.setQuestionFourAnswer(fragment.onQuestionAnswer());
+            }
+            if(fragmentList.get(position) instanceof IFragment){
+                IFragment fragment = (IFragment) fragmentList.get(position);
+                userAnswers.setQuestionFive(questionList.get(position).getQuestion());
+                userAnswers.setQuestionFiveAnswer(fragment.onQuestionAnswer());
             }
         }
+
+        submitAnswers(userAnswers);
     }
 
 
-    public void submitAnswers(int position){
-        Toast.makeText(this, , Toast.LENGTH_LONG).show();
+    public void submitAnswers(UserAnswers userAnswers){
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        databaseUserAnswers = FirebaseDatabase.getInstance().getReference("Users").child("user-answers");
+
+        if (account != null) {
+            userAnswers.setUserId(account.getId());
+            String id = databaseUserAnswers.push().getKey();
+            databaseUserAnswers.child(id).setValue(userAnswers);
+        }
+
+        if (firebaseUser != null){
+            userAnswers.setUserId(firebaseUser.getUid());
+            String id = databaseUserAnswers.push().getKey();
+            databaseUserAnswers.child(id).setValue(userAnswers);
+        }
     }
 
 }

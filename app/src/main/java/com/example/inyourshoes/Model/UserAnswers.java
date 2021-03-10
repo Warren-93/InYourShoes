@@ -2,7 +2,7 @@ package com.example.inyourshoes.Model;
 
 public class UserAnswers {
 
-    int userId;
+    String userId;
     String questionOne, questionTwo, questionThree, questionFour, questionFive;
     String questionOneAnswer, questionTwoAnswer, questionThreeAnswer, questionFourAnswer, questionFiveAnswer;
 
@@ -10,11 +10,11 @@ public class UserAnswers {
     }
 
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
