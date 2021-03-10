@@ -51,12 +51,10 @@ public class QuestionOneFragment extends Fragment implements IFragment {
     }
 
 
-
     @Override
     public String onQuestionAnswer() {
         return questionOneAnswer.getText().toString();
     }
-
 
     public void onDetach() {
         super.onDetach();

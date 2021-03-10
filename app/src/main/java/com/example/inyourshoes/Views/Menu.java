@@ -25,6 +25,13 @@ public class Menu extends AppCompatActivity {
     TextView userText;
 
 
+    FirebaseUser firebaseUser;
+    FirebaseAuth firebaseAuth;
+
+    GoogleSignIn googleSignIn;
+    GoogleSignInAccount googleAccount;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,13 +67,18 @@ public class Menu extends AppCompatActivity {
         infoBtn = findViewById(R.id.infoBtn);
         infoBtn.setOnClickListener(this::onClick);
 
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        googleAccount = GoogleSignIn.getLastSignedInAccount(this);
 
-        if(account != null)
-            userText.setText(String.format("Welcome, %s", account.getDisplayName()));
-        else if( firebaseUser != null)
-            userText.setText(String.format("Welcome, %s", firebaseUser.getDisplayName()));
+
+        if ( firebaseUser != null){
+            checkFirebaseAccount();
+        }
+        else if(googleAccount !=null){
+            checkGoogleAccount();
+        }
+
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -100,11 +112,31 @@ public class Menu extends AppCompatActivity {
         }
     }
 
-    private void logOut(){
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+    private void checkGoogleAccount(){
 
-        if (account != null) {
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+
+        if (account != null)
+            userText.setText(String.format("Welcome, %s", account.getDisplayName()));
+        else{
+            userText.setText(String.format("Welcome %s", account.getEmail()));
+        }
+    }
+
+    private void checkFirebaseAccount(){
+        String display = firebaseUser.getDisplayName();
+
+        if( firebaseUser != null)
+            if (display != null)
+                userText.setText(String.format("Welcome, %s", display));
+            else {
+                userText.setText(String.format("Welcome %s", firebaseUser.getEmail() ));
+            }
+    }
+
+    private void logOut(){
+
+        if (googleAccount != null) {
             mGoogleSignInClient.signOut()
                     .addOnCompleteListener(this, task -> {
                         Toast.makeText(Menu.this, "Successfully signed out", Toast.LENGTH_SHORT).show();
@@ -117,4 +149,7 @@ public class Menu extends AppCompatActivity {
             finish();
         }
     }
+
+
+
 }

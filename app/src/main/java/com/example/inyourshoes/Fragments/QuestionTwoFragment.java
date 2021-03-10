@@ -47,7 +47,6 @@ public class QuestionTwoFragment extends Fragment implements IFragment {
         return rootView;
     }
 
-
     public void onAttach(@NonNull Context context){
         super.onAttach(context);
     }

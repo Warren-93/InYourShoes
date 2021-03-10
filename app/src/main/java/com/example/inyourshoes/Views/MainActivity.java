@@ -18,6 +18,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -52,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         // Set the dimensions of the sign-in button.
         SignInButton signInWithGoogleButton = findViewById(R.id.google_sign_in_button);
         signInWithGoogleButton.setSize(SignInButton.SIZE_STANDARD);
-
 
         //Set Up Register/Sign In with User Email and Password UserJournal
         signInButton = (Button)findViewById(R.id.signInButton);
@@ -118,10 +119,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         // Check for existing Google Sign In account, if the user is already signed in
         // the GoogleSignInAccount will be non-null.
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        if(account != null) {
+        GoogleSignInAccount googleAccount = GoogleSignIn.getLastSignedInAccount(this);
+        if(googleAccount != null) {
             startActivity(new Intent(MainActivity.this, Menu.class));
         }
+
+/*      FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUser != null) {
+            startActivity(new Intent(MainActivity.this, Menu.class));
+        }*/
         super.onStart();
     }
 

@@ -43,15 +43,7 @@ import java.util.Random;
 
 public class FiveQs extends AppCompatActivity {
 
-
-    private String questionOneAnswer;
-    private String questionTwoAnswer;
-    private String questionThreeAnswer;
-    private String questionFourAnswer;
-    private String questionFiveAnswer;
-
     //Database References for FiveQ's
-
     DatabaseReference databaseStaticQuestions;
     DatabaseReference databaseRandomQuestionFour;
     DatabaseReference databaseRandomQuestionFive;
@@ -207,7 +199,6 @@ public class FiveQs extends AppCompatActivity {
 
 
     public void getUserAnswers() {
-        UserAnswers userAnswers = new UserAnswers();
         for (int position = 0; position < fragmentList.size(); position++) {
             if (fragmentList.get(position) instanceof IFragment) {
                 IFragment fragment = (IFragment) fragmentList.get(position);
@@ -215,6 +206,7 @@ public class FiveQs extends AppCompatActivity {
             }
 
         }
+        answerList.get(2).toString();
         submitAnswers();
 
     }
@@ -242,7 +234,7 @@ public class FiveQs extends AppCompatActivity {
                     userAnswers.setQuestionFour(questionList.get(3).getQuestion());
                     userAnswers.setQuestionFourAnswer(answerList.get(3).toString());
                 case 4:
-                    userAnswers.setQuestionFive(questionList.get(4).getQuestion().toString());
+                    userAnswers.setQuestionFive(questionList.get(4).getQuestion());
                     userAnswers.setQuestionFiveAnswer(answerList.get(4).toString());
             }
         }
