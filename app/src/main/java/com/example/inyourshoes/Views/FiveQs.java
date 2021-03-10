@@ -12,6 +12,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.inyourshoes.Adapters.QuestionsPagerAdapter;
 import com.example.inyourshoes.Fragments.QuestionFiveFragment;
@@ -249,6 +250,9 @@ public class FiveQs extends AppCompatActivity {
             userAnswers.setUserId(firebaseUser.getUid());
             String id = databaseUserAnswers.push().getKey();
             databaseUserAnswers.child(id).setValue(userAnswers);
+
+            Toast.makeText(this, "Answers Submitted Successfully", Toast.LENGTH_SHORT).show();
+
         }
     }
 

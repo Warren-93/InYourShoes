@@ -14,12 +14,11 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.inyourshoes.Adapters.EmojiAdapter;
+
 import com.example.inyourshoes.Interfaces.IEmoji;
-import com.example.inyourshoes.Model.Emoji;
-import com.example.inyourshoes.Model.UserEmotions;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -32,7 +31,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
+
+import com.example.inyourshoes.Model.*;
+
+
 
 
 public class MoodTracker extends AppCompatActivity implements IEmoji {
@@ -42,7 +44,7 @@ public class MoodTracker extends AppCompatActivity implements IEmoji {
     RecyclerView recyclerView;
     DatabaseReference databaseEmojis;
     FirebaseDatabase firebaseDatabase;
-    final private static List<Emoji> emojiList = new ArrayList<>();
+    List<Emoji> emojiList = new ArrayList<>();
     DatabaseReference databaseEmotions;
 
 

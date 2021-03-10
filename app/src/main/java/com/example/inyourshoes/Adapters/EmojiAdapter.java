@@ -7,9 +7,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.inyourshoes.Interfaces.IEmoji;
-import com.example.inyourshoes.Model.Emoji;
-import com.example.inyourshoes.Views.R;
+import com.example.inyourshoes.Model.*;
 
+
+import com.example.inyourshoes.Views.R;
 
 import java.util.List;
 
