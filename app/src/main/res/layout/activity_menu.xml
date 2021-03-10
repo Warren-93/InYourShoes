@@ -10,7 +10,7 @@
     android:orientation="vertical"
     android:textAlignment="center"
     android:visibility="visible"
-    tools:context=".Menu">
+    tools:context="university.project.inyourshoes.Views.Menu">
 
     <TextView
         android:id="@+id/userText"
