@@ -10,8 +10,10 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.inyourshoes.Adapters.QuestionsPagerAdapter;
@@ -64,6 +66,7 @@ public class FiveQs extends AppCompatActivity  {
     FragmentStateAdapter questionsPagerAdapter;
     Button answerSubmitBtn;
     List<Fragment> fragmentList = new ArrayList<>();
+    List<String> answerList = new ArrayList<>();
 
 
     @Override
@@ -83,15 +86,9 @@ public class FiveQs extends AppCompatActivity  {
         answerSubmitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            //    UserAnswers userAnswers = new UserAnswers();
-                List<String> answerList = new ArrayList<>();
-                for(int position = 0; position < fragmentList.size(); position++ ){
-                    if(fragmentList.get(position) instanceof IFragment){
-                        IFragment fragment = (IFragment) fragmentList.get(position);
-                        answerList.add(fragment.onQuestionAnswer());
-                    }
-                }
-                //Toast.makeText(this, answerList.get(0), Toast.LENGTH_LONG).show();
+                int position = 0;
+                getUserAnswers();
+                submitAnswers(position);
             }
         });
     }
@@ -208,6 +205,21 @@ public class FiveQs extends AppCompatActivity  {
     }
 
 
+    public void getUserAnswers(){
+
+
+        for(int position = 0; position < fragmentList.size(); position++ ){
+            if(fragmentList.get(position) instanceof IFragment){
+                IFragment fragment = (IFragment) fragmentList.get(position);
+                answerList.add(fragment.onQuestionAnswer());
+            }
+        }
+    }
+
+
+    public void submitAnswers(int position){
+        Toast.makeText(this, , Toast.LENGTH_LONG).show();
+    }
 
 }
 
