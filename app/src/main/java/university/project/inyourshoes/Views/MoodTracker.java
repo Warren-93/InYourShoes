@@ -91,6 +91,12 @@ public class MoodTracker extends AppCompatActivity implements IEmoji {
     }
 
 
+    public void setBackgroundColours(){
+
+
+
+    }
+
 
     @Override
     public void onClick(View view, int position) {

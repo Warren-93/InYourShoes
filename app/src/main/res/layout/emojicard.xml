@@ -7,13 +7,14 @@
     android:layout_marginLeft="5dp"
     android:layout_marginTop="18dp"
     android:layout_marginRight="10dp"
-    android:alpha="3"
+    android:alpha="10"
     android:clickable="true"
     android:focusable="true"
     android:paddingStart="100dp"
     android:paddingEnd="100dp"
     app:cardBackgroundColor="#043768"
-    app:cardCornerRadius="30dp">
+    app:cardCornerRadius="30dp"
+    app:cardElevation="50dp">
 
 
     <TextView
@@ -39,4 +40,5 @@
         android:textColor="@color/white"
         android:textSize="12sp"
         android:textStyle="normal" />
+
 </androidx.cardview.widget.CardView>

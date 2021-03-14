@@ -9,8 +9,7 @@
     android:backgroundTintMode="multiply"
     android:orientation="vertical"
     android:textAlignment="center"
-    android:visibility="visible"
-    tools:context="university.project.inyourshoes.Views.Menu">
+    android:visibility="visible">
 
     <TextView
         android:id="@+id/userText"
@@ -19,7 +18,7 @@
         android:layout_marginStart="106dp"
         android:layout_marginTop="41dp"
         android:layout_marginEnd="217dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/moodBtn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,16 +36,17 @@
         android:layout_marginTop="300dp"
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="8dp"
+        android:background="@color/black"
         android:fadingEdge="vertical"
         android:text="@string/mood_tracker"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="@color/fui_bgTwitter"
+        android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="normal"
         android:theme="@style/Theme.MaterialComponents"
         android:typeface="monospace"
-        app:cornerRadius="10dp"
+        app:cornerRadius="65dp"
         app:layout_constraintBottom_toTopOf="@+id/journalBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.512"
@@ -66,7 +66,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/journal"
         android:textAlignment="center"
-        android:textColor="@color/fui_bgTwitter"
+        android:textColor="#F9FAFB"
         android:textSize="14sp"
         android:typeface="monospace"
         app:cornerRadius="10dp"
@@ -74,8 +74,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/moodBtn"
-        app:strokeColor="@color/fui_bgGitHub"
-        app:strokeWidth="1dp" />
+        app:strokeWidth="5dp" />
 
     <Button
         android:id="@+id/chatBtn"
@@ -88,7 +87,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/chat"
         android:textAlignment="center"
-        android:textColor="@color/fui_bgTwitter"
+        android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="normal"
         android:typeface="monospace"
@@ -114,7 +113,7 @@
         android:text="@string/five_q_s"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textColor="@color/fui_bgTwitter"
+        android:textColor="@color/white"
         android:textSize="14sp"
         android:theme="@style/Theme.MaterialComponents"
         android:typeface="monospace"
@@ -140,7 +139,7 @@
         android:text="@string/info"
 
         android:textAlignment="center"
-        android:textColor="@color/fui_bgTwitter"
+        android:textColor="@color/white"
         android:textColorHighlight="@color/black"
         android:textSize="14sp"
         android:typeface="monospace"
@@ -165,7 +164,7 @@
         android:text="@string/log_out"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textColor="@color/fui_bgTwitter"
+        android:textColor="@color/white"
         android:textIsSelectable="false"
         android:textSize="18sp"
         android:typeface="monospace"
