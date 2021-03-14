@@ -3,9 +3,9 @@
     android:color="#1976D2">
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="#145273" />
+            <solid android:color="#219ADA" />
             <corners android:radius="65dp" />
         </shape>
     </item>
-    <item android:drawable="@drawable/rounded_shape" />
+    <item android:drawable="@drawable/home_rounded_shape" />
 </ripple>
