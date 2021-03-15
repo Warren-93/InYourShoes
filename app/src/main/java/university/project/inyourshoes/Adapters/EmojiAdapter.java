@@ -1,6 +1,5 @@
 package university.project.inyourshoes.Adapters;
 
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,11 +54,14 @@ public class EmojiAdapter extends RecyclerView.Adapter<EmojiAdapter.ViewHolder> 
             }
         });
 
-        for(int i = 0; i < emojiList.size() ; i++) {
+        holder.emojiCard.setBackgroundResource(R.drawable.emoji_gradient);
+
+        //Loop for picking random colour from list for each emojicards background
+/*        for(int i = 0; i < emojiList.size() ; i++) {
             String color="#"+mColors[position];
             holder.emojiCard.setCardBackgroundColor(Color.parseColor(color));
 
-        }
+        }*/
     }
 
     @Override
@@ -84,12 +86,14 @@ public class EmojiAdapter extends RecyclerView.Adapter<EmojiAdapter.ViewHolder> 
         return new String(Character.toChars(uni));
     }
 
-    public int getRandomColor(){
+
+    //Random Color List picker
+/*    public int getRandomColor(){
         Random random = new Random();
         int index = random.nextInt(mColors.length);
         return index;
 
-    }
+    }*/
 }
 
 

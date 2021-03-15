@@ -78,6 +78,9 @@ public class Home extends AppCompatActivity {
             case R.id.google_sign_in_button:
                 signInWithGoogle();
                 break;
+            case R.id.resetButton:
+                startActivity(new Intent(Home.this, ResetPassword.class));
+                finish();
         }
     }
 

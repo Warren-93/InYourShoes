@@ -69,17 +69,27 @@ public class Menu extends AppCompatActivity {
         infoBtn.setOnClickListener(this::onClick);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser = firebaseAuth.getCurrentUser();
+        firebaseAuth.getCurrentUser();
         googleAccount = GoogleSignIn.getLastSignedInAccount(this);
 
+        userCheck();
 
-        if ( firebaseUser != null){
+
+    }
+
+    private void userCheck() {
+
+
+        if(firebaseUser == null && googleAccount == null){
+            Toast.makeText(this, "Must be logged in to access this page", Toast.LENGTH_SHORT).show();
+            //startActivity(new Intent(this, Home.class));
+        }
+        else if ( firebaseUser != null){
             checkFirebaseAccount();
         }
         else if(googleAccount !=null){
             checkGoogleAccount();
         }
-
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -115,12 +125,12 @@ public class Menu extends AppCompatActivity {
 
     private void checkGoogleAccount(){
 
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
 
-        if (account != null)
-            userText.setText(String.format("Welcome, %s", account.getDisplayName()));
+
+        if (googleAccount != null)
+            userText.setText(String.format("Welcome, %s", googleAccount.getDisplayName()));
         else{
-            userText.setText(String.format("Welcome %s", account.getEmail()));
+            userText.setText(String.format("Welcome %s", googleAccount.getEmail()));
         }
     }
 
@@ -140,9 +150,11 @@ public class Menu extends AppCompatActivity {
         if (googleAccount != null) {
             mGoogleSignInClient.signOut()
                     .addOnCompleteListener(this, task -> {
-                        Toast.makeText(Menu.this, "Successfully signed out", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(Menu.this, Home.class));
-                        finish();
+                        if(task.isSuccessful()) {
+                            Toast.makeText(Menu.this, "Successfully signed out", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(Menu.this, Home.class));
+                            finish();
+                        }
                     });
         } else if (firebaseUser != null) {
             FirebaseAuth.getInstance().signOut();

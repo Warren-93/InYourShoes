@@ -4,40 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/question_three"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/teal_700">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/questionThree"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
-        android:textColor="@color/black"
+        android:padding="10dp"
+        android:elevation="2dp"
+        android:textColor="@color/white"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/questionThreeAnswer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.155"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.812" />
 
     <EditText
         android:id="@+id/questionThreeAnswer"
         android:layout_width="match_parent"
-        android:layout_height="298dp"
+        android:layout_height="350dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="4dp"
         android:layout_marginBottom="8dp"
+        android:elevation="2dp"
         android:ems="10"
         android:gravity="start|top"
         android:importantForAutofill="no"
         android:inputType="textMultiLine"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.025" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

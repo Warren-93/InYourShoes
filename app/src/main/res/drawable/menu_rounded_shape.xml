@@ -3,13 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle"   >
     <solid
-        android:color="#196CD2" >
+        android:color="#95145116" >
     </solid>
     <gradient
         android:angle="45"
-        android:endColor="#145DCC"
-        android:startColor="#145DCC"
-        android:centerColor="#061575" />
+        android:endColor="#124E08"
+        android:centerColor="#0B6019"
+        android:startColor="#43A047" />
 
     <corners
         android:radius="10dp"   >

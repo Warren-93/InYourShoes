@@ -8,16 +8,17 @@
     <string name="journal">Journal</string>
     <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
-    <string name="register">register</string>
+    <string name="register">Register</string>
     <string name="re_enter_password">Re-enter password</string>
     <string name="enter_password">Enter password</string>
     <string name="email">Email</string>
     <string name="surname">Surname</string>
     <string name="first_name">First name</string>
     <string name="reset_passsword">Reset Passsword</string>
-    <string name="how_are_you_feeling_today">How Are You Feeling Today?</string>
+    <string name="how_are_you_feeling_today">How Are You Feeling?</string>
     <string name="submit">Submit</string>
     <string name="_5_questions">5 Questions</string>
     <string name="five_q_s">Five Qs</string>
+    <string name="back">Back</string>
 
 </resources>

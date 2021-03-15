@@ -59,7 +59,7 @@ public class MoodTracker extends AppCompatActivity implements IEmoji {
         recyclerView = findViewById(R.id.recyclerView);
         EmojiAdapter emojiAdapter = new EmojiAdapter(emojiList, this);
 
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
         //Get Time and Date for display
         Date currentDate = Calendar.getInstance().getTime();
@@ -88,13 +88,6 @@ public class MoodTracker extends AppCompatActivity implements IEmoji {
             }
         };
         databaseEmojis.addValueEventListener(eventListener);
-    }
-
-
-    public void setBackgroundColours(){
-
-
-
     }
 
 

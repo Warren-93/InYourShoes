@@ -12,8 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
-        <activity android:name=".FiveQs"/>
-        <activity android:name=".MentalHealthInfo"/>
+        <activity android:name=".ResetPassword"></activity>
+        <activity android:name=".FiveQs" />
+        <activity android:name=".MentalHealthInfo" />
         <activity android:name=".Chat" />
         <activity android:name=".Journal" />
         <activity android:name=".MoodTracker" />
@@ -31,7 +32,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
     </application>
 
 </manifest>
