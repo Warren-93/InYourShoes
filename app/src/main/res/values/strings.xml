@@ -20,5 +20,6 @@
     <string name="_5_questions">5 Questions</string>
     <string name="five_q_s">Five Qs</string>
     <string name="back">Back</string>
+    <string name="enter_email_to_send_reset_password_email">Enter Email to send reset Password email</string>
 
 </resources>

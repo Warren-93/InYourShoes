@@ -18,14 +18,12 @@ import java.util.Random;
 import university.project.inyourshoes.Model.Emoji;
 
 
-public class EmojiAdapter extends RecyclerView.Adapter<EmojiAdapter.ViewHolder> {
+public class
+EmojiAdapter extends RecyclerView.Adapter<EmojiAdapter.ViewHolder> {
 
     List<Emoji> emojiList;
     IEmoji eListener;
 
-    public String[] mColors = { "1B5E20", "311B92", "303F9F", "004D40",
-            "388E3C", "1A237E", "512DA8", "00796B",
-            "00897B", "4CAF50", "", "", "", "", "", "",};
 
     public EmojiAdapter(List<Emoji> emojiList, IEmoji eListener){
         this.emojiList = emojiList;
@@ -56,12 +54,6 @@ public class EmojiAdapter extends RecyclerView.Adapter<EmojiAdapter.ViewHolder> 
 
         holder.emojiCard.setBackgroundResource(R.drawable.emoji_gradient);
 
-        //Loop for picking random colour from list for each emojicards background
-/*        for(int i = 0; i < emojiList.size() ; i++) {
-            String color="#"+mColors[position];
-            holder.emojiCard.setCardBackgroundColor(Color.parseColor(color));
-
-        }*/
     }
 
     @Override
@@ -86,14 +78,6 @@ public class EmojiAdapter extends RecyclerView.Adapter<EmojiAdapter.ViewHolder> 
         return new String(Character.toChars(uni));
     }
 
-
-    //Random Color List picker
-/*    public int getRandomColor(){
-        Random random = new Random();
-        int index = random.nextInt(mColors.length);
-        return index;
-
-    }*/
 }
 
 

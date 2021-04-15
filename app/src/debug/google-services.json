@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "460522013963",
+    "firebase_url": "https://in-your-shoes-4403d.firebaseio.com",
+    "project_id": "in-your-shoes-4403d",
+    "storage_bucket": "in-your-shoes-4403d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460522013963:android:0c08e7b6222193ae68ce0e",
+        "android_client_info": {
+          "package_name": "university.project.inyourshoes.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "460522013963-pdrgcad89o543l3ahs1p22g2k3h9jl93.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "university.project.inyourshoes.debug",
+            "certificate_hash": "7b5c8f093124f79af7dc7235b2d9333d355108f1"
+          }
+        },
+        {
+          "client_id": "460522013963-cli29u1la2u8m5a037p6nshapv9t8j0a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTJXGgyqOuvcIaO4G8HKNcjbQoTf9EFtU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460522013963-cli29u1la2u8m5a037p6nshapv9t8j0a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

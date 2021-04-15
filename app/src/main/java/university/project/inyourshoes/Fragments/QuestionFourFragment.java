@@ -42,7 +42,6 @@ public class QuestionFourFragment extends Fragment implements IFragment {
         String question_Four = getArguments().getString("Extra_QuestionFour");
         questionFour = (TextView) rootView.findViewById(R.id.questionFour);
         questionFourAnswer = rootView.findViewById(R.id.questionFourAnswer);
-
         questionFour.setText(question_Four);
 
         return rootView;
@@ -51,7 +50,6 @@ public class QuestionFourFragment extends Fragment implements IFragment {
     public void onAttach(@NonNull Context context){
         super.onAttach(context);
     }
-
 
 
     public String onQuestionAnswer() {

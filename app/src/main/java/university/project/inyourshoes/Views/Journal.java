@@ -2,6 +2,7 @@ package university.project.inyourshoes.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -85,6 +86,9 @@ public class Journal extends AppCompatActivity {
                 databaseJournal.child(Objects.requireNonNull(id)).setValue(userJournal);
 
                 Toast.makeText(this, "Journal Entry Succesful", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Journal.this, Menu.class));
+                finish();
+
 
             } else if (firebaseUser != null) {
 
@@ -93,10 +97,12 @@ public class Journal extends AppCompatActivity {
                 userJournal.setUserId(firebaseUser.getUid());
                 userJournal.setEntry(userEntry);
                 userJournal.setDate(entryDate);
-
                 databaseJournal.child(Objects.requireNonNull(id)).setValue(userJournal);
 
                 Toast.makeText(this, "Journal Entry Succesful", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Journal.this, Menu.class));
+                finish();
+
             }
 
         }else{

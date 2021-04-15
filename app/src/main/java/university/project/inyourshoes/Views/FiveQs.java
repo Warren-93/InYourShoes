@@ -11,6 +11,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -29,7 +30,6 @@ import university.project.inyourshoes.Model.Questions;
 
 import university.project.inyourshoes.Model.UserAnswers;
 
-import university.project.inyourshoes.Views.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
@@ -57,7 +57,7 @@ public class FiveQs extends AppCompatActivity {
     List<Questions> questionList = new ArrayList<>();
     List<QuestionsRandomFour> questionFourList = new ArrayList<>();
     List<QuestionsRandomFive> questionFiveList = new ArrayList<>();
-    ArrayList answerList = new ArrayList();
+    ArrayList<String> answerList = new ArrayList<String>();
 
 
     ViewPager2 viewPager2;
@@ -78,7 +78,6 @@ public class FiveQs extends AppCompatActivity {
         getStaticQuestions();
         getQuestionFours();
         getQuestionFives();
-
 
         answerSubmitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,7 +136,6 @@ public class FiveQs extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         };
         databaseRandomQuestionFour.addValueEventListener(staticEventListener);
@@ -203,12 +201,19 @@ public class FiveQs extends AppCompatActivity {
 
 
     public void getUserAnswers() {
+
         for (int position = 0; position < fragmentList.size(); position++) {
             if (fragmentList.get(position) instanceof IFragment) {
-                IFragment fragment = (IFragment) fragmentList.get(position);
-                answerList.add(fragment.onQuestionAnswer());
-            }
+                if (!TextUtils.isEmpty(((IFragment) fragmentList.get(position)).onQuestionAnswer())) {
+                    IFragment fragment = (IFragment) fragmentList.get(position);
+                    answerList.add(fragment.onQuestionAnswer());
+                }
+                else {
+                    Toast.makeText(this, "You need to enter text in all 5 question boxes to submit your answers", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, FiveQs.class));
 
+                }
+            }
         }
 
         submitAnswers(answerList);
@@ -216,12 +221,13 @@ public class FiveQs extends AppCompatActivity {
     }
 
 
-    public void submitAnswers(ArrayList answerList) {
+    public void submitAnswers(ArrayList<String> answerList) {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         UserAnswers userAnswers = new UserAnswers();
         databaseUserAnswers = FirebaseDatabase.getInstance().getReference("Users").child("user-answers");
+
 
         for (int i = 0; i < questionList.size(); i++) {
             switch (i) {

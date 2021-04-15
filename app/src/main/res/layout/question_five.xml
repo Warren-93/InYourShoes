@@ -10,7 +10,7 @@
         android:id="@+id/questionFive"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="8dp"
         android:elevation="2dp"
@@ -21,6 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.812" />
+
 
     <EditText
         android:id="@+id/questionFiveAnswer"
@@ -35,7 +36,7 @@
         android:gravity="start|top"
         android:importantForAutofill="no"
         android:inputType="textMultiLine"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

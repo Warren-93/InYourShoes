@@ -3,12 +3,11 @@ package university.project.inyourshoes.Model;
 public class Emoji extends EmojiArrayList {
 
 
+
+    public Emoji(){}
+
     String name;
     String unicode;
-
-    public Emoji(){
-
-    }
 
     public Emoji(String unicode, String name) {
         this.name = name;

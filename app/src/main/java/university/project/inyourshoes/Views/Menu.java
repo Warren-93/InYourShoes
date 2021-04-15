@@ -74,17 +74,10 @@ public class Menu extends AppCompatActivity {
 
         userCheck();
 
-
     }
 
     private void userCheck() {
-
-
-        if(firebaseUser == null && googleAccount == null){
-            Toast.makeText(this, "Must be logged in to access this page", Toast.LENGTH_SHORT).show();
-            //startActivity(new Intent(this, Home.class));
-        }
-        else if ( firebaseUser != null){
+        if ( firebaseUser != null){
             checkFirebaseAccount();
         }
         else if(googleAccount !=null){
@@ -126,12 +119,9 @@ public class Menu extends AppCompatActivity {
     private void checkGoogleAccount(){
 
 
-
         if (googleAccount != null)
             userText.setText(String.format("Welcome, %s", googleAccount.getDisplayName()));
-        else{
-            userText.setText(String.format("Welcome %s", googleAccount.getEmail()));
-        }
+
     }
 
     private void checkFirebaseAccount(){
