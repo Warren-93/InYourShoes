@@ -14,8 +14,6 @@
         android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
         <activity android:name=".ResetPassword" />
         <activity android:name=".FiveQs" />
-        <activity android:name=".MentalHealthInfo" />
-        <activity android:name=".Chat" />
         <activity android:name=".Journal" />
         <activity android:name=".MoodTracker" />
         <activity android:name=".SignIn" />

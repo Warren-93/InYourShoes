@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class QuestionArrayList extends ArrayList<Questions> {
 
-
+    //Extension of Arraylist extended by Question object
     public ArrayList questionList;
 
     public QuestionArrayList() {

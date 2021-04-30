@@ -21,6 +21,8 @@ import university.project.inyourshoes.Model.Emoji;
 public class
 EmojiAdapter extends RecyclerView.Adapter<EmojiAdapter.ViewHolder> {
 
+
+    //UI Adapter for visually displaying data and setting up the layout
     List<Emoji> emojiList;
     IEmoji eListener;
 
@@ -39,6 +41,8 @@ EmojiAdapter extends RecyclerView.Adapter<EmojiAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        //Sets the display data within the UI
+
         Emoji emoji = emojiList.get(position);
         String emojiCharString = emoji.getUnicode();
         int emojiCharInt = Integer.decode(emojiCharString);
@@ -61,6 +65,8 @@ EmojiAdapter extends RecyclerView.Adapter<EmojiAdapter.ViewHolder> {
         return emojiList.size();
     }
 
+
+    //Holds the view data for the UI of the emoji tracker
     public static class ViewHolder extends RecyclerView.ViewHolder{
         TextView emojiName, emojiImage;
         CardView emojiCard;
@@ -74,6 +80,7 @@ EmojiAdapter extends RecyclerView.Adapter<EmojiAdapter.ViewHolder> {
         }
     }
 
+    //Translates the character unicode into an emoji for display of emoticons
     public String getEmoji(int uni){
         return new String(Character.toChars(uni));
     }

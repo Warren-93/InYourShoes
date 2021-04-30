@@ -85,6 +85,7 @@ public class Menu extends AppCompatActivity {
         }
     }
 
+    //Use Case for menu functionality for button id clicked
     @SuppressLint("NonConstantResourceId")
     private void onClick(View view) {
         switch (view.getId()){
@@ -116,8 +117,9 @@ public class Menu extends AppCompatActivity {
         }
     }
 
-    private void checkGoogleAccount(){
 
+    //Setting welcome message
+    private void checkGoogleAccount(){
 
         if (googleAccount != null)
             userText.setText(String.format("Welcome, %s", googleAccount.getDisplayName()));
@@ -135,6 +137,8 @@ public class Menu extends AppCompatActivity {
             }
     }
 
+
+    //Logout button
     private void logOut(){
 
         if (googleAccount != null) {

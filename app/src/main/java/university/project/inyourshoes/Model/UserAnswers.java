@@ -2,18 +2,16 @@ package university.project.inyourshoes.Model;
 
 public class UserAnswers {
 
+
+    //Users Answers Object created for user entered data in FiveQ's
     String userId;
     String questionOne, questionTwo, questionThree, questionFour, questionFive;
-    String questionOneAnswer, questionThreeAnswer, questionFourAnswer, questionFiveAnswer;
-
-
-
-    String  questionTwoAnswer;
+    String questionOneAnswer, questionTwoAnswer, questionThreeAnswer, questionFourAnswer, questionFiveAnswer;
 
     public UserAnswers() {
     }
 
-
+    //Getters and setters for each question
     public String getUserId() {
         return userId;
     }

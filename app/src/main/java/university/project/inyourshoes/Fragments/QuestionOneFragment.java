@@ -24,12 +24,14 @@ import university.project.inyourshoes.Views.R;
 
 
 public class QuestionOneFragment extends Fragment implements IFragment {
-
+    //UI Layout for the fragment for question one in the viewpager for FiveQs
     private static final String Extra_QuestionOne = "QuestionOne";
     EditText questionOneAnswer;
     TextView questionOne;
 
 
+    //Collecting data on fragment view from the bundle to send the corresponding question one
+    // in the array list questions
     public static QuestionOneFragment newInstance(String question){
         QuestionOneFragment fragmentOne = new QuestionOneFragment();
         Bundle bundle = new Bundle();
@@ -43,12 +45,12 @@ public class QuestionOneFragment extends Fragment implements IFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup parent,
                              @Nullable Bundle savedInstanceState) {
+        //sets data to display in the fragment
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.question_one, parent, false);
         String question_one = getArguments().getString("Extra_QuestionOne");
         questionOne = rootView.findViewById(R.id.questionOne);
         questionOneAnswer = rootView.findViewById(R.id.questionOneAnswer);
         questionOne.setText(question_one);
-
         return rootView;
     }
 
@@ -57,6 +59,7 @@ public class QuestionOneFragment extends Fragment implements IFragment {
     }
 
 
+    //Uses interface from main thread on click of submit to collect the answer from the fragment
     @Override
     public String onQuestionAnswer() {
         return questionOneAnswer.getText().toString();

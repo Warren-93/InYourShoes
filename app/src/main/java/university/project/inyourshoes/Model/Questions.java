@@ -2,6 +2,7 @@ package university.project.inyourshoes.Model;
 
 public class Questions {
 
+    //Main questions object for first 3 static questions
     int id;
     String question;
 
@@ -9,6 +10,7 @@ public class Questions {
 
         }
 
+    // Setter and getters
     public int getId() {
         return id;
     }

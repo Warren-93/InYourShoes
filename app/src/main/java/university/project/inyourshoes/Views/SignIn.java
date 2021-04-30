@@ -23,6 +23,8 @@ public class SignIn extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private Button backBtn;
 
+
+    //Login with manual user creation created within the app on registration page
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,11 +51,11 @@ public class SignIn extends AppCompatActivity {
 
     }
 
+    //Data entry validation to check details against those in database
     private void login() {
         mAuth = FirebaseAuth.getInstance();
         String email = signInEmail.getEditableText().toString().trim();
         String password = signInPassword.getEditableText().toString().trim();
-
 
         if (!TextUtils.isEmpty(email) || !TextUtils.isEmpty(password)) {
 

@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Home extends AppCompatActivity {
 
-
+// Initialisation of variables for views and functionality to sign in
     Button signInButton, regBtn, resetBtn;
     private static final int RC_SIGN_IN = 100;
     private GoogleSignInClient mGoogleSignInClient;
@@ -67,6 +67,8 @@ public class Home extends AppCompatActivity {
 
     }
 
+
+    //switch case to get id of button and run as corresponding funtionality
     private void onClick(View view) {
         switch (view.getId()){
             case R.id.signInButton:
@@ -86,13 +88,15 @@ public class Home extends AppCompatActivity {
         }
     }
 
-    
+    //Google sign in setup
     private void signInWithGoogle() {
 
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
+
+    //Activity result tracking for sign in functionality with gooogle user
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -106,6 +110,7 @@ public class Home extends AppCompatActivity {
         }
     }
 
+    //Handling functionality for google sign in
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
@@ -126,7 +131,8 @@ public class Home extends AppCompatActivity {
         if(googleAccount != null) {
             startActivity(new Intent(Home.this, Menu.class));
         }
-
+        // Check for existing firebase user account, if the user is already signed in
+        // the firebaseUser will be non-null.
       FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
             startActivity(new Intent(Home.this, Menu.class));

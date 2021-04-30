@@ -2,13 +2,15 @@ package university.project.inyourshoes.Model;
 
 public class UserJournal {
 
-
+    //User Journal Object cxreated for the collection of data entered into journal
+    // which will be stored in firebase database
     String userId;
     String date;
     String entry;
 
     public UserJournal(){}
 
+    //Getter and setters
     public String getUserId() {
         return userId;
     }

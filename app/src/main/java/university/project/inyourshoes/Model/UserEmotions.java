@@ -2,6 +2,8 @@ package university.project.inyourshoes.Model;
 
 public class UserEmotions {
 
+    //User Emotions Object cxreated for the collection of data for the clicked emoticon data
+    // which will be stored in firebase database
     String userId;
     String unicode;
     String unicodeName;
@@ -14,6 +16,8 @@ public class UserEmotions {
         this.date = date;
     }
 
+
+    //Getter and setters
     public String getUserId() {
         return userId;
     }

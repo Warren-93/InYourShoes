@@ -11,6 +11,8 @@ import java.util.List;
 
 public class QuestionsPagerAdapter extends FragmentStateAdapter {
 
+
+    //UI Adapter for using a viewpager2 widget for scrolling functionality
     List<Fragment> fragmentList;
 
     public QuestionsPagerAdapter(@NonNull FragmentActivity fragmentActivity, List<Fragment> fragmentList) {

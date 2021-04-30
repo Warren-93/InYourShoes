@@ -53,13 +53,19 @@ public class FiveQs extends AppCompatActivity {
     DatabaseReference databaseRandomQuestionFive;
     DatabaseReference databaseUserAnswers;
 
-    //
+    //Arraylists for Questions on FiveQs, initial 3 questions list dont change
     List<Questions> questionList = new ArrayList<>();
+    //Question Four Question List seperated from first 3 and Q5, for ability to select random
+    // question set as a q4 question in DB
     List<QuestionsRandomFour> questionFourList = new ArrayList<>();
+    //Question Five Question List seperated from first 3 and Q4, for ability to select random
+    // question set as a q5 question in DB
     List<QuestionsRandomFive> questionFiveList = new ArrayList<>();
+
+    //ArrayList of answers collected from user input on submit initialisation
     ArrayList<String> answerList = new ArrayList<String>();
 
-
+    //Variable Initialisation
     ViewPager2 viewPager2;
     FragmentStateAdapter questionsPagerAdapter;
     Button answerSubmitBtn;
@@ -71,10 +77,13 @@ public class FiveQs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_five_q);
 
+        //Variables Setting
         viewPager2 = findViewById(R.id.questionPager);
         questionsPagerAdapter = new QuestionsPagerAdapter(this, fragmentList);
         answerSubmitBtn = findViewById(R.id.userAnswerSubmitBtn);
 
+
+        //Functions for Questions in UI
         getStaticQuestions();
         getQuestionFours();
         getQuestionFives();
@@ -190,6 +199,7 @@ public class FiveQs extends AppCompatActivity {
         return index;
     }
 
+    //Fragments used for questions and answers input
     private List<Fragment> getFragments() {
         fragmentList.add(QuestionOneFragment.newInstance(questionList.get(0).getQuestion()));
         fragmentList.add(QuestionTwoFragment.newInstance(questionList.get(1).getQuestion()));
@@ -202,6 +212,7 @@ public class FiveQs extends AppCompatActivity {
 
     public void getUserAnswers() {
 
+        //Getting each uiser answer from the UI
         for (int position = 0; position < fragmentList.size(); position++) {
             if (fragmentList.get(position) instanceof IFragment) {
                 if (!TextUtils.isEmpty(((IFragment) fragmentList.get(position)).onQuestionAnswer())) {
@@ -221,6 +232,7 @@ public class FiveQs extends AppCompatActivity {
     }
 
 
+    //User Answer Collection functionality, and submitting to database
     public void submitAnswers(ArrayList<String> answerList) {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -228,7 +240,7 @@ public class FiveQs extends AppCompatActivity {
         UserAnswers userAnswers = new UserAnswers();
         databaseUserAnswers = FirebaseDatabase.getInstance().getReference("Users").child("user-answers");
 
-
+        //Each question collected
         for (int i = 0; i < questionList.size(); i++) {
             switch (i) {
                 case 0:
@@ -249,6 +261,8 @@ public class FiveQs extends AppCompatActivity {
             }
         }
 
+        //getting User AccountId associated with the answers being collected, with the user
+        // logged in details. checking for google user, or firebase user
         if (account != null) {
             userAnswers.setUserId(account.getId());
             String id = databaseUserAnswers.push().getKey();

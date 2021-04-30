@@ -19,7 +19,7 @@ public class ResetPassword extends AppCompatActivity {
     EditText resetEmail;
     Button resetPasswordBtn;
 
-
+    //Reset password functionality
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

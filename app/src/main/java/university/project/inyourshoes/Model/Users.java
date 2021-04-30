@@ -2,6 +2,9 @@ package university.project.inyourshoes.Model;
 
 public class Users {
 
+    //Users Object for creation of object within registration form, collected to store in
+    // database as a user login details
+
     String  firstName, surname, email;
 
     public Users() {

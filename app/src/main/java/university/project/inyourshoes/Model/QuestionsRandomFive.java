@@ -2,10 +2,9 @@ package university.project.inyourshoes.Model;
 
 public class QuestionsRandomFive {
 
-
+    //Question Fives Objects
     int questionId;
     String question;
-
 
     public QuestionsRandomFive() {
 

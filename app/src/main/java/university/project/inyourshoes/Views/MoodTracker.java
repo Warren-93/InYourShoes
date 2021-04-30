@@ -36,6 +36,7 @@ import university.project.inyourshoes.Model.UserEmotions;
 
 public class MoodTracker extends AppCompatActivity implements IEmoji {
 
+    //Variables Initialisation
     TextView welcomeText, dateView;
     CardView emojiButtonCard;
     RecyclerView recyclerView;
@@ -52,18 +53,22 @@ public class MoodTracker extends AppCompatActivity implements IEmoji {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mood_tracker);
 
+
+        //Variables Instantiating
         welcomeText = findViewById(R.id.welcomeText);
         dateView = findViewById(R.id.dateView);
         emojiButtonCard = findViewById(R.id.emojiButtonCard);
         recyclerView = findViewById(R.id.recyclerView);
 
+
+        //Layout manager setup for grid layout and recycler view widget
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         firebaseDatabase = FirebaseDatabase.getInstance();
 
+        //Adapter reference and setup
         emojiAdapter = new EmojiAdapter(emojiList, this);
 
         //Get Time and Date for display
-
 
         String welcome = "How are you feeling?";
 
@@ -113,10 +118,16 @@ public class MoodTracker extends AppCompatActivity implements IEmoji {
 
     private void trackEmotion(int position){
 
+        //Emoji emotion tracker getting the user data and the clicked emnotion for collection and
+        // sent to database, setup for both google user and firebase user
+
+        //setting user settings for firebase and google user
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        //Instantiates user emotions object
         UserEmotions userEmotions = new UserEmotions();
+        //Database reference for location to send data collected
         databaseEmotions = FirebaseDatabase.getInstance().getReference("Users").child("user-emotions");
 
         if(!TextUtils.isEmpty(emojiList.get(position).getUnicode())) {

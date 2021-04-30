@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class QuestionsRandomFiveArrayList {
 
+    //Has the same functionality as main questions object, but with QuestionFive questions list
     public ArrayList randomQuestionFiveList;
 
     public QuestionsRandomFiveArrayList() {

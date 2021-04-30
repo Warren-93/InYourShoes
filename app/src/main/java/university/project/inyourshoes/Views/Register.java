@@ -25,6 +25,7 @@ import java.util.Objects;
 
 public class Register extends AppCompatActivity {
 
+    //Initialising variables for UI View Widgets
     private EditText regFirstName, regSurname, regEmail, regPassword, regPasswordReEnter;
     private Button regButton, regBackBtn;
 
@@ -33,9 +34,8 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-
+        //Instantiating variables with view UI Widgets
         regBackBtn = findViewById(R.id.regBackBtn);
-
         regFirstName = findViewById(R.id.regFirstName);
         regSurname = findViewById(R.id.regSurname);
         regEmail = findViewById(R.id.regEmail);
@@ -44,7 +44,7 @@ public class Register extends AppCompatActivity {
         regButton = findViewById(R.id.regBtn);
 
 
-
+        //Click functionality for collecting data entered into fields to create user
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,14 +65,14 @@ public class Register extends AppCompatActivity {
     private void registerUser() {
 
 
+        //Collect user entered data in the fields for creating user
         String firstName = regFirstName.getEditableText().toString().trim();
         String surname = regSurname.getEditableText().toString().trim();
         String email = regEmail.getEditableText().toString().trim();
         String password = regPassword.getEditableText().toString().trim();
         String passwordReEnter = regPasswordReEnter.getEditableText().toString().trim();
 
-
-
+            //Data validated for empty fields
             if (!TextUtils.isEmpty(firstName) || !TextUtils.isEmpty(surname) || !TextUtils.isEmpty(email) || !TextUtils.isEmpty(password) || !TextUtils.isEmpty(passwordReEnter))  {
                 if (password == passwordReEnter) {
                 FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -80,6 +80,9 @@ public class Register extends AppCompatActivity {
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
+
+                                //Creating user and entering user entered data into database and
+                                // registering as a user on firebase
                                 if (task.isSuccessful()) {
                                     Users user;
                                     user = new Users(firstName, surname, email);

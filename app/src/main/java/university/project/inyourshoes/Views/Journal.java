@@ -28,8 +28,8 @@ import java.util.Objects;
 
 public class Journal extends AppCompatActivity {
 
+    //Variable Initialising
     DatabaseReference databaseJournal;
-
     TextView dateView;
     EditText journalEntry;
     Button userJournalBtn;
@@ -41,10 +41,10 @@ public class Journal extends AppCompatActivity {
         setContentView(R.layout.activity_journal);
 
 
+        //Database Reference location
+        databaseJournal = FirebaseDatabase.getInstance().getReference("Users").child("user" + "-journal");
 
-        databaseJournal = FirebaseDatabase.getInstance().getReference("Users").child("user" +
-                "-journal");
-
+        //Variable UI Setting
         dateView = findViewById(R.id.dateView);
         journalEntry = findViewById(R.id.journalEntry) ;
         userJournalBtn = findViewById(R.id.userJournalBtn);
@@ -63,6 +63,9 @@ public class Journal extends AppCompatActivity {
         });
     }
 
+
+    //Collecting user entry, setting userid and getting the journal entry and the date entered to
+    // be then sent to database
     private void addEntry(){
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();

@@ -2,8 +2,8 @@ package university.project.inyourshoes.Model;
 
 public class QuestionsRandomFour {
 
+    //Question Four Object
     String question;
-
 
     public QuestionsRandomFour() {
     }
